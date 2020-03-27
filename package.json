@@ -1,0 +1,22 @@
+{
+  "name": "NodeProject",
+  "version": "1.0.0",
+  "description": "Set up a node test environment",
+  "main": "app/project.js",
+  "keywords": [
+    "kata",
+    "tdd",
+    "node",
+    "js"
+  ],
+  "scripts": {
+    "test": "mocha ./tests",
+    "test:watch": "mocha --watch ./tests ./app"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "sinon": "^9.0.1"
+  }
+}
