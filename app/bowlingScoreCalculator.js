@@ -6,8 +6,10 @@ const isStrike = tour => tour[0] === 10;
 
 
 const calculateBonusForTheStrike = (gameTours, tourIndex) => {
-    const nextLaunch = gameTours[tourIndex + 1][0];
-    const followingLaunch = isStrike(gameTours[tourIndex + 1]) ? gameTours[tourIndex + 2][0] : gameTours[tourIndex + 1][1];
+    const nextTour = gameTours[tourIndex + 1];
+    const followingTour = gameTours[tourIndex + 2];
+    const nextLaunch = nextTour[0];
+    const followingLaunch = isStrike(nextTour) ? followingTour[0] : nextTour[1];
     return nextLaunch + followingLaunch;
 };
 
@@ -22,7 +24,7 @@ const calculateScoreForTheLastTour = tour => tour.reduce((accumulator, currentVa
 
 const calculateTourScore = (tour, tourIndex, gameTours) => {
     const isLastTour = tourIndex === 9;
-    if(isLastTour) return calculateScoreForTheLastTour(tour);
+    if (isLastTour) return calculateScoreForTheLastTour(tour);
 
     const tourScoreWithoutBonus = calculateTourScoreWithoutBonus(tour);
     const tourBonus = calculateBonus(tour, tourIndex, gameTours);
