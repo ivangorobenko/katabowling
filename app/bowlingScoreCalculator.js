@@ -7,10 +7,13 @@ const isStrike = tour => tour[0] === 10;
 
 const calculateBonusForTheStrike = (gameTours, tourIndex) => {
     const nextTour = gameTours[tourIndex + 1];
-    const followingTour = gameTours[tourIndex + 2];
-    const nextLaunch = nextTour[0];
-    const followingLaunch = isStrike(nextTour) ? followingTour[0] : nextTour[1];
-    return nextLaunch + followingLaunch;
+    if (nextTour !== undefined) {
+        const followingTour = gameTours[tourIndex + 2];
+        const nextLaunch = nextTour[0];
+        const followingLaunch = isStrike(nextTour) ? followingTour[0] : nextTour[1];
+        return nextLaunch + followingLaunch;
+    }
+    return 0
 };
 
 const calculateBonusForTheSpare = (gameTours, tourIndex) => gameTours[tourIndex + 1][0];

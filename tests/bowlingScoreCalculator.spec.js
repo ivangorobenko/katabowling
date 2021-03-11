@@ -3,6 +3,9 @@ const calculateScoreForAPlayer = require('../app/bowlingScoreCalculator.js');
 
 describe('Bowling', () => {
     context('Expect', () => {
+        it('doit renvoyer un score de 10 le joueur fait un strike à la première lancée', () => {
+            expect(calculateScoreForAPlayer([[10]])).to.equal(10)
+        });
         it('doit renvoyer un score 1 quand 1 seul point a été gagné dans une partie', () => {
             expect(calculateScoreForAPlayer([[1, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])).to.equal(1)
         });
@@ -33,6 +36,7 @@ describe('Bowling', () => {
         it('doit renvoyer un score de 10 quand dans un jeu le joueur fait 1 spare au dernier tour', () => {
             expect(calculateScoreForAPlayer([[1,2], [0,0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [1, 9]])).to.equal(13)
         });
+
 
     })
 })
